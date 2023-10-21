@@ -6,7 +6,7 @@ class TestMainFunctions(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.df = pd.read_csv("cars.csv")
+        cls.df = pd.read_csv("cars.csv", sep=';')
 
     def test_compute_statistics(self):
         stats = compute_statistics(self.df, 'Weight')
