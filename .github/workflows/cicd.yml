@@ -1,57 +1,30 @@
-name: CI/CD Workflow
-
+name: CI
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  python-job:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-
-    - name: Install Python dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Run Python tests
-      run: python test_main.py
-
-  rust-job:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Rust
-      uses: actions-rs/toolchain@v1
-      with:
-        profile: minimal
-        toolchain: stable
-        override: true
-
-    - name: Build Rust code
-      uses: actions-rs/cargo@v1
-      with:
-        command: build
-        args: --release
-
-    - name: Run Rust tests
-      uses: actions-rs/cargo@v1
-      with:
-        command: test
-        args: --release
-
+      - uses: actions/checkout@v3
+      - name: install packages
+        run: make install
+      - name: lint
+        run: make lint
+      - name: extract 
+        run: make extract 
+      - name: transform_load
+        run: make transform_load 
+      - name: query
+        run: make query
+      - name: test
+        run: make test
+      - name: format
+        run: make format
+      - name: deploy
+        run: make deploy
+      
