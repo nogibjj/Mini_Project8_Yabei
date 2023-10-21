@@ -3,7 +3,7 @@ import pandas as pd
 
 def main():
     # Load the dataset
-    df = pd.read_csv("cars.csv")
+    df = pd.read_csv("cars.csv", sep=';')
     
     column_name = 'Weight'
     
