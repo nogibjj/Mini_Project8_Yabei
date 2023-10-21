@@ -1,21 +1,19 @@
-"""
-Test goes here
+import unittest
+from main import compute_statistics
+import pandas as pd
 
-"""
+class TestMainFunctions(unittest.TestCase):
 
-import pytest
-from unittest.mock import patch
-from main import main
+    @classmethod
+    def setUpClass(cls):
+        cls.df = pd.read_csv("cars.csv")
 
-def test_main_function():
-    with patch('builtins.input', return_value=''):  # Mocking user input
-        with patch('main.extract') as mock_extract:
-            with patch('main.load') as mock_load:
-                with patch('main.query') as mock_query:
-                    main()
-                    mock_extract.assert_called_once()
-                    mock_load.assert_called_once()
-                    mock_query.assert_called_once()
+    def test_compute_statistics(self):
+        stats = compute_statistics(self.df, 'Weight')
+        self.assertIn('mean', stats)
+        self.assertIn('median', stats)
+        self.assertIn('std', stats)
+        self.assertIn('size', stats)
 
-if __name__ == "__main__":
-    pytest.main()
+if __name__ == '__main__':
+    unittest.main()
