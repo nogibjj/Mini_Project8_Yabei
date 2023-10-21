@@ -1,36 +1,38 @@
-install:
-	pip install --upgrade pip &&\
-		pip install -r requirements.txt
+# Variables
+RUST_TARGET = target/release/Mini8
 
-test:
-	python -m pytest -vv --cov=main --cov=mylib test_*.py
+# Default target
+all: python rust
 
-format:	
-	black *.py 
+# Python targets
+python:
+	@echo "Running Python version..."
+	python main.py
 
-lint:
-	#disable comment to test speed
-	#pylint --disable=R,C --ignore-patterns=test_.*?py *.py mylib/*.py
-	#ruff linting is 10-100X faster than pylint
-	ruff check *.py mylib/*.py
+# Rust targets
+rust: $(RUST_TARGET)
+	@echo "Running Rust version..."
+	./$(RUST_TARGET)
 
-extract:
-	python mylib/extract.py
+$(RUST_TARGET): src/main.rs
+	cargo build --release
 
-transform_load:
-	python mylib/transform_load.py
+# Clean targets
+clean:
+	@echo "Cleaning up..."
+	rm -rf target/
+	rm -rf __pycache__/
+	rm -rf mylib/__pycache__/
 
-query:
-	python mylib/query.py
+# Test targets
+test: test-python test-rust
 
+test-python:
+	@echo "Testing Python version..."
+	python test_main.py
 
-container-lint:
-	docker run --rm -i hadolint/hadolint < Dockerfile
+test-rust:
+	@echo "Testing Rust version..."
+	cargo test
 
-refactor: format lint
-
-deploy:
-	#deploy goes here
-
-		
-all: install lint test format deploy
+.PHONY: all python rust clean test test-python test-rust
