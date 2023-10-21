@@ -7,7 +7,7 @@ def main():
     
     # For demonstration purposes, let's say we want to compute statistics for a column named 'Price'.
     # Make sure to replace 'Price' with the actual column name from your dataset if it's different.
-    column_name = 'Price'
+    column_name = 'Weight'
     
     if column_name in df.columns:
         stats = compute_statistics(df, column_name)
