@@ -1,35 +1,27 @@
-"""
-ETL-Query script
-"""
-import sys
-from mylib.extract import extract
-from mylib.transform_load import load
-from mylib.query import query
+from mylib.lib import compute_statistics
+import pandas as pd
 
 def main():
-    try:
-        # Extract
-        print("Extracting data...")
-        source_url = input("Enter the source URL: ") or None
-                           
-        extract(url=source_url)
-        print("Data extraction completed successfully.\n")
-
-        # Transform and Load
-        print("Transforming and loading data...")
-                           
-        dataset_path = input("Enter the dataset path: ") or None
-                           
-        load(dataset=dataset_path)                 
-        print("Data transformation and loading completed successfully.\n")
-
-        # Query
-        print("Querying data...")
-        query()
-        print("Data querying completed successfully.\n")
-
-    except Exception as e:
-        print(f"An error occurred: {e}", file=sys.stderr)
+    # Load the dataset
+    df = pd.read_csv("cars.csv")
+    
+    # For demonstration purposes, let's say we want to compute statistics for a column named 'Price'.
+    # Make sure to replace 'Price' with the actual column name from your dataset if it's different.
+    column_name = 'Price'
+    
+    if column_name in df.columns:
+        stats = compute_statistics(df, column_name)
+        
+        # Print the computed statistics
+        print(f"Statistics for column '{column_name}':")
+        print(f"Mean: {stats['mean']:.2f}")
+        print(f"Median: {stats['median']:.2f}")
+        print(f"Standard Deviation: {stats['std']:.2f}")
+        print(f"Size: {stats['size']}")
+    else:
+        print(f"Column '{column_name}' not found in the dataset.")
 
 if __name__ == "__main__":
     main()
+
+    
