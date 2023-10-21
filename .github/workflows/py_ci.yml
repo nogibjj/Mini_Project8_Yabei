@@ -33,7 +33,7 @@ jobs:
       - name: Pull latest changes
         run: git pull
 
-      - name: Generate and push logs/artifacts
+      - name: generate_and_push
         run: make generate_and_push
 
       - name: Deploy
