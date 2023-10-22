@@ -68,4 +68,3 @@ generate_and_push:
 		echo "No changes to commit. Skipping commit and push."; \
 	fi
 
-.PHONY: rust-version format install lint test run release py_install py_test py_format py_lint py_container-lint py_deploy all py_all generate_and_push
