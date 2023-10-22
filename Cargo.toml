@@ -10,8 +10,8 @@ edition = "2018"
 csv = "1.1"
 rusqlite = "0.24"
 statrs = "0.14"
-sys-info = "0.9"
 reqwest = { version = "0.11", features = ["blocking"] }
+sys-info = "0.7"
 
 [dev-dependencies]
 pretty_assertions = "0.7"
