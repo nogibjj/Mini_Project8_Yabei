@@ -1,11 +1,12 @@
-#import psutil
+# import psutil
 from mylib.lib import compute_statistics
 import pandas as pd
-#import time
+
+# import time
 
 
 def main():
-    #start_time = time.time()
+    # start_time = time.time()
 
     # Load the dataset
     df = pd.read_csv("cars.csv", sep=";")
