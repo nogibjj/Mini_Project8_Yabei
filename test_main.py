@@ -3,6 +3,7 @@ import time
 import psutil
 from main import compute_statistics
 
+
 def test_compute_statistics():
     start_time = time.time()
     df = pd.read_csv("cars.csv", sep=";")
@@ -13,7 +14,7 @@ def test_compute_statistics():
     assert "std" in stats, "Standard deviation not computed"
     assert "size" in stats, "Size not computed"
     end_time = time.time()
-    #print("All compute_statistics checks passed.")
+    # print("All compute_statistics checks passed.")
 
     end_time = time.time()
 
@@ -24,6 +25,7 @@ def test_compute_statistics():
     print(f"Elapsed time: {elapsed_time:.4f} seconds")
     print(f"CPU Usage: {cpu_percent}%")
     print(f"Memory Usage: {memory_info.percent}%")
+
 
 if __name__ == "__main__":
     test_compute_statistics()
