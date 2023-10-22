@@ -30,14 +30,8 @@ jobs:
       - name: Format Python code
         run: make py_format
 
-      - name: Commit local changes
-        run: |
-          git add .
-          git commit -m "Commit local changes before pulling"
-
       - name: Pull latest changes
         run: git pull
-
 
       - name: generate_and_push
         run: make generate_and_push
