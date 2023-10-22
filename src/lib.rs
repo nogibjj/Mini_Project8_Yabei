@@ -29,4 +29,3 @@ pub fn compute_statistics(data: &Vec<f64>) -> Statistics {
         size,
     }
 }
-
