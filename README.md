@@ -87,9 +87,13 @@ The CPU usage for python is 50%
 The memory usage is 43.4%
 
 #### Rust Results
-The elapsed time for rust is 0.001106444 seconds
-The memory usage is 4MB
+![rust_test](https://github.com/nogibjj/Mini_Project8_Yabei/assets/143656459/8411dfda-2ad2-4bd2-84a6-23420daec580)
 
+The elapsed time for rust is 0.001078813 seconds
+The CPU usage is 15%
+The memory usage is 40.91223%
+
+Overall, Rust looks to be more efficient in this test, both in terms of execution time and CPU consumption. Memory utilization is equivalent between the two, with Rust having a little advantage.
 ## License
 
 This project is licensed under the CC0 1.0 Universal license.
