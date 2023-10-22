@@ -1,4 +1,4 @@
-[![Python CI/CD](https://github.com/nogibjj/Mini_Project8_Yabei/actions/workflows/py_ci.yml/badge.svg)](https://github.com/nogibjj/Mini_Project8_Yabei/actions/workflows/py_ci.yml) 
+[![Python CI/CD](https://github.com/nogibjj/Mini_Project8_Yabei/actions/workflows/py_ci.yml/badge.svg)](https://github.com/nogibjj/Mini_Project8_Yabei/actions/workflows/py_ci.yml) [![Rust CI/CD](https://github.com/nogibjj/Mini_Project8_Yabei/actions/workflows/rs_ci.yml/badge.svg)](https://github.com/nogibjj/Mini_Project8_Yabei/actions/workflows/rs_ci.yml)
 # Mini Project 8: Rewrite a Python Script in Rust
 
 ## Introduction
