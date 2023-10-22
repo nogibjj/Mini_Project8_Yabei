@@ -19,62 +19,54 @@ In this mini project, we take a Python script meant for data processing and rewr
 - **Rust Code**: Contains `main.rs` and `lib.rs`, which are Rust equivalents of the Python code.
 - **requirements.txt**: Lists the dependencies for the Python project.
 
-### Dependencies
+## Dependencies
 
-- **DevOps**: `black`, `click`, `pytest`, `pytest-cov`, `requests`
-- **Rust Linter**: `ruff`
-- **Data Processing**: `pandas`, `psutil`
+The project has the following dependencies:
 
-## CI/CD
+### Main Dependencies
 
-### Python CI/CD Workflow
+- **csv**: `1.1`
+  - A fast CSV reading/writing library for Rust.
+  
+- **rusqlite**: `0.24`
+  - Rust bindings for SQLite.
+  
+- **statrs**: `0.14`
+  - Provides statistics and numerical routines for Rust.
+  
+- **reqwest**: `0.11`
+  - An easy and powerful Rust HTTP Client, with `blocking` feature enabled.
+  
+- **sys-info**: `0.7`
+  - A library to get system information in Rust.
 
-```yaml
-name: Python CI/CD
+### Development Dependencies
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+- **pretty_assertions**: `0.7`
+  - Overwrite panics with pretty assertions in Rust.
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
-      - name: Sleep for 80 seconds
-        run: sleep 80
+### Preparation
+- **Linting:**
 
-      - name: Install Python packages
-        run: make py_install
+Linting helps identify potential issues in the code. Run the lint command to check for any such problems:
 
-      - name: Lint Python code
-        run: make py_lint
-
-      - name: Run Python tests
-        run: make py_test
-
-      - name: Format Python code
-        run: make py_format
-
-      - name: Pull latest changes
-        run: git pull
-
-      - name: generate_and_push
-        run: make generate_and_push
-
-      - name: Deploy
-        run: make py_deploy
+```bash
+make py_lint
 ```
 
-### Makefile
+- **Running Tests:**
+Before finalizing any changes, ensure all tests pass. Run the test suite using:
+```bash
+make py_test
+```
+- **Formating:**
+To ensure the code adheres to the project's style guidelines
+```bash
+make py_format
+```
 
-A simplified version of the Makefile has been provided. This file contains both Rust and Python targets for various tasks including linting, testing, and deployment.
 
 ### Results for Python Lint and Test
 ![lint_test](https://github.com/nogibjj/Mini_Project8_Yabei/assets/143656459/bea6742b-6f2b-4f6f-a93e-824c48bef32e)
@@ -82,16 +74,22 @@ A simplified version of the Makefile has been provided. This file contains both 
 ### Comparison between Python and Rust
 #### Python Results
 ![py_test](https://github.com/nogibjj/Mini_Project8_Yabei/assets/143656459/73fc742e-635b-417a-b5b9-653598f2bc91)
+
 The elapsed time for python is 0.0024 seconds
+
 The CPU usage for python is 50%
+
 The memory usage is 43.4%
 
 #### Rust Results
 ![rust_test](https://github.com/nogibjj/Mini_Project8_Yabei/assets/143656459/8411dfda-2ad2-4bd2-84a6-23420daec580)
 
 The elapsed time for rust is 0.001078813 seconds
+
 The CPU usage is 15%
+
 The memory usage is 40.91223%
+
 
 Overall, Rust looks to be more efficient in this test, both in terms of execution time and CPU consumption. Memory utilization is equivalent between the two, with Rust having a little advantage.
 ## License
