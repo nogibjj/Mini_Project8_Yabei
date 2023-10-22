@@ -1,8 +1,10 @@
 from mylib.lib import compute_statistics
 import pandas as pd
-
+import time
 
 def main():
+    start_time = time.time()
+
     # Load the dataset
     df = pd.read_csv("cars.csv", sep=";")
 
@@ -20,6 +22,8 @@ def main():
     else:
         print(f"Column '{column_name}' not found in the dataset.")
 
+    end_time = time.time()
+    print(f"Execution time: {end_time - start_time:.2f} seconds")
 
 if __name__ == "__main__":
     main()
