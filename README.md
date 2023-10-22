@@ -90,9 +90,9 @@ The CPU usage is 15%
 
 The memory usage is 40.91223%
 
+Overall, Rust looks to be more efficient in this test, both in terms of execution time and CPU consumption. Memory utilization is equivalent between the two, with Rust having a little advantage. One possible reason could be that: Rust, a compiled language with aggressive optimizations and a unique ownership system, frequently outperforms Python, an interpreted language, in raw computational tasks. While Rust's design emphasizes zero-cost abstractions and efficient memory management without a garbage collector, Python prioritizes developer productivity and readability. As a result, Python may introduce more runtime overhead. However, test specifics, library optimizations, and the nature of tasks can all influence performance differences.
 
-Overall, Rust looks to be more efficient in this test, both in terms of execution time and CPU consumption. Memory utilization is equivalent between the two, with Rust having a little advantage.
-## License
+### License. 
 
 This project is licensed under the CC0 1.0 Universal license.
 
