@@ -1,25 +1,27 @@
-mod lib;  // Import the lib module
+mod lib; // Import the lib module
+use csv::ReaderBuilder;
 use std::error::Error;
 use std::fs::File;
 use std::process::Command;
-use csv::ReaderBuilder;
 use std::time::Instant;
-
 
 fn main() -> Result<(), Box<dyn Error>> {
     let start_time = Instant::now();
     // 1. Read the cars.csv file
     let file = File::open("cars.csv")?;
-    
+
     // Create the CSV reader with the specified delimiter
     let mut rdr = ReaderBuilder::new()
-        .delimiter(b';')  // Set the delimiter to ;
+        .delimiter(b';') // Set the delimiter to ;
         .has_headers(true)
         .from_reader(file);
-    
+
     // Find the index of the "Weight" column
     let headers = rdr.headers()?;
-    let weight_index = headers.iter().position(|h| h == "Weight").ok_or("Weight column not found")?;
+    let weight_index = headers
+        .iter()
+        .position(|h| h == "Weight")
+        .ok_or("Weight column not found")?;
 
     // 2. Extract the "Weight" column from the CSV data
     let mut weights: Vec<f64> = Vec::new();
@@ -31,7 +33,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
         }
     }
-    
+
     // 3. Compute the statistics
     let stats = lib::compute_statistics(&weights);
     println!("Mean: {}", stats.mean);
@@ -42,8 +44,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // Calculate the elapsed time and resource usage
     let elapsed_time = end_time.duration_since(start_time);
-    println!("Total execution time: {:?}", elapsed_time);  // Print the elapsed time
-    // Memory usage
+    println!("Total execution time: {:?}", elapsed_time); // Print the elapsed time
+                                                          // Memory usage
     let mem_info = sys_info::mem_info().unwrap();
     println!(
         "Memory Usage: {}%",
@@ -51,12 +53,12 @@ fn main() -> Result<(), Box<dyn Error>> {
     );
     // CPU calculation
     let output = Command::new("ps")
-    .arg("-o")
-    .arg("%cpu")
-    .arg("-p")
-    .arg(format!("{}", std::process::id()))
-    .output()
-    .expect("Failed to execute ps command");
+        .arg("-o")
+        .arg("%cpu")
+        .arg("-p")
+        .arg(format!("{}", std::process::id()))
+        .output()
+        .expect("Failed to execute ps command");
 
     // Convert the output to a string
     let usage = String::from_utf8_lossy(&output.stdout);
