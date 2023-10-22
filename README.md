@@ -76,6 +76,19 @@ jobs:
 
 A simplified version of the Makefile has been provided. This file contains both Rust and Python targets for various tasks including linting, testing, and deployment.
 
+### Results for Python Lint and Test
+![lint_test](https://github.com/nogibjj/Mini_Project8_Yabei/assets/143656459/bea6742b-6f2b-4f6f-a93e-824c48bef32e)
+
+### Comparison between Python and Rust
+#### Python Results
+![py_test](https://github.com/nogibjj/Mini_Project8_Yabei/assets/143656459/73fc742e-635b-417a-b5b9-653598f2bc91)
+The elapsed time for python is 0.0024 seconds
+The CPU usage for python is 50%
+The memory usage is 43.4%
+
+#### Rust Results
+The elapsed time for rust is 0.001106444 seconds
+The memory usage is 4MB
 
 ## License
 
