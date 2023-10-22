@@ -33,12 +33,11 @@ jobs:
       - name: Pull latest changes
         run: git pull
 
-      # Set up Git authentication using PAT
-      # - name: Set up Git authentication
-      #   run: |
-      #     git config --global user.name "GitHub Actions"
-      #     git config --global user.email "actions@github.com"
-      #     git remote set-url origin https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/yabeizeng1121/Mini8.git
+      - name: Commit local changes
+        run: |
+          git add .
+          git commit -m "Commit local changes before pulling"
+
 
       - name: generate_and_push
         run: make generate_and_push
