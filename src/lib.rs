@@ -1,11 +1,11 @@
-struct Statistics {
-    mean: f64,
-    median: f64,
-    std: f64,
-    size: usize,
+pub struct Statistics {
+    pub mean: f64,
+    pub median: f64,
+    pub std: f64,
+    pub size: usize,
 }
 
-fn compute_statistics(data: &Vec<f64>) -> Statistics {
+pub fn compute_statistics(data: &Vec<f64>) -> Statistics {
     let size = data.len();
     let sum: f64 = data.iter().sum();
     let mean = sum / size as f64;
@@ -30,11 +30,3 @@ fn compute_statistics(data: &Vec<f64>) -> Statistics {
     }
 }
 
-fn main() {
-    let data = vec![10.0, 20.0, 30.0, 40.0, 50.0];
-    let stats = compute_statistics(&data);
-    println!("Mean: {}", stats.mean);
-    println!("Median: {}", stats.median);
-    println!("Standard Deviation: {}", stats.std);
-    println!("Size: {}", stats.size);
-}
