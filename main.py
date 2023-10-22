@@ -5,7 +5,7 @@ import time
 
 
 def main():
-    start_time = time.time()
+    #start_time = time.time()
 
     # Load the dataset
     df = pd.read_csv("cars.csv", sep=";")
