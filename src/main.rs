@@ -27,7 +27,6 @@ fn main() {
         Err(e) => eprintln!("Error occurred: {}", e),
     }
 
-    // Capture memory usage after operation
     let mem_info_after = sys_info::mem_info().unwrap();
     let memory_usage_after = mem_info_after.avail / (1024 * 1024);  // Convert KB to MB
     println!("Memory usage after operation: {} MB", memory_usage_after);
