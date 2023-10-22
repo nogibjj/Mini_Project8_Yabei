@@ -24,11 +24,11 @@ def main():
     else:
         print(f"Column '{column_name}' not found in the dataset.")
 
-    end_time = time.time()
-    print(f"Execution time: {end_time - start_time:.2f} seconds")
-    process = psutil.Process()
-    memory_usage = process.memory_info().rss / (1024**2)  # Convert bytes to MB
-    print(f"Memory usage: {memory_usage:.2f} MB")
+    # end_time = time.time()
+    # print(f"Execution time: {end_time - start_time:.2f} seconds")
+    # process = psutil.Process()
+    # memory_usage = process.memory_info().rss / (1024**2)  # Convert bytes to MB
+    # print(f"Memory usage: {memory_usage:.2f} MB")
 
 
 if __name__ == "__main__":
