@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Sleep for 80 seconds
         run: sleep 80
@@ -32,6 +32,13 @@ jobs:
 
       - name: Pull latest changes
         run: git pull
+
+      # Set up Git authentication using PAT
+      - name: Set up Git authentication
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/yourusername/yourrepo.git
 
       - name: generate_and_push
         run: make generate_and_push
